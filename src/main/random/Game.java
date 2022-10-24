@@ -20,7 +20,7 @@ public class Game {
     }
 
     public boolean battle() {
-        // TODO
+        if (random.nextInt(2) == 1) return true;
         return false;
     }
 
