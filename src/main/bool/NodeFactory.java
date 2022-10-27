@@ -10,9 +10,12 @@ public class NodeFactory {
     }
     
     public BooleanNode constructNode(JSONObject obj) {
-        String node = obj.getString("node");
+        String node = null;
         JSONObject subnode1 = null;
         JSONObject subnode2 = null;
+        if (obj.has("node")) {
+            node = obj.getString("node");
+        }
         if (obj.has("subnode1")) {
             subnode1 = obj.getJSONObject("subnode1");
         }
@@ -48,14 +51,13 @@ public class NodeFactory {
         sub2.put("node", "value");
         sub2.put("value", false);
         JSONObject or = new JSONObject();
+        or.put("node", "or");
         or.put("subnode1", sub);
         or.put("subnode2", sub2);
         
-        JSONObject objSub1 = new JSONObject();
-        objSub1.put("subnode1", or);
-        JSONObject objSub2 = new JSONObject();
-        objSub2.put("subnode2", sub);
-        
+        obj.put("subnode1", or);
+        obj.put("subnode2", sub);
+
 
         NodeFactory f = new NodeFactory();
         BooleanNode res = f.constructNode(obj);
