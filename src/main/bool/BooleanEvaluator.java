@@ -1,19 +1,22 @@
 package bool;
 
 public class BooleanEvaluator {
-
+    
     public static boolean evaluate(BooleanNode expression) {
-        // Return the expression evaluated
-        return false;
+        return expression.evaluate();
     }
 
     public static String prettyPrint(BooleanNode expression) {
-        // Pretty print the expression
-        return null;
+        return expression.prettyPrint();
     }
 
     public static void main(String[] args) {
-        // BooleanEvaluator.evaluate(...)
+        System.out.println(BooleanEvaluator.evaluate(new Or(
+            new LeafNode(false), 
+            new Not(new LeafNode(false)))));
+        System.out.println(BooleanEvaluator.prettyPrint(new Or(
+            new LeafNode(false), 
+            new Not(new LeafNode(false)))));
         // BooleanEvaluator.evaluate(...)
     }
 

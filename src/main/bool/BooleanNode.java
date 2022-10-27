@@ -8,5 +8,7 @@ package bool;
  */
 public interface BooleanNode {
     
+    public boolean evaluate();
 
+    public String prettyPrint();
 }
